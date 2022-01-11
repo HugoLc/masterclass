@@ -9,3 +9,5 @@
 - props são read only, só será possível mudar utilizando estados (useState hook)
 
 - pode ser usado o operador ?? para definir um prop padrão caso o campo da prop não for preenchido : {prop.titulo ?? "titulo padrao"}
+
+- para url dinamicas é criado o component com o nome entre colchetes [componente]. qualquer texto que for adicionado na url /clientes/ será direcionado para esse componente.
