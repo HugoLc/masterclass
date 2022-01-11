@@ -7,6 +7,7 @@ export default function ClientePorCodigo(){
     return (
         <>
             <h1>Codigo = {router.query.codigo}</h1>
+            <h2>Filial = {router.query.filial}</h2>
         </>
     )
 
