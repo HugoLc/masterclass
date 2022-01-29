@@ -1,10 +1,19 @@
 import Cabecalho from "../components/Cabecalho";
 import Link from "next/link";
 import Navegador from "../components/Navegador";
+import { useRouter } from "next/router";
+
 
 export default function Inicio(){
     const proxIdade = (idadeAtual) =>{
         return idadeAtual += 1;
+    }
+
+    const router = useRouter();
+
+    const handleNavigation = () => {
+        router.push("/teste")
+        /* router.replace("/teste") */
     }
 
     return (
@@ -16,6 +25,8 @@ export default function Inicio(){
             <Navegador destino="/jsx" texto="JSX" corFundo="green" />
             <Navegador destino="/teste" texto="Teste" corFundo="blue" />
             <Navegador destino="/clientes" texto="Clientes" corFundo="yellow" />
+            <button onClick={handleNavigation}>Navigating programatically</button>
+
         </>
         
     ) 
