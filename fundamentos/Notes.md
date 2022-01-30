@@ -18,3 +18,5 @@
 - https://www.youtube.com/watch?v=BeXbCgRxifs&list=PLC3y8-rFHvwgC9mj0qv972IO5DmD-H0ZH&index=15
 
 - a função getStaticProps é executada no servidor e podem ser utilizadas funcionalidades server-side dentro dela. é utilizada apenas em pages e não em componentes. deve retornar um objeto "props" com outro objeto dentro.
+
+- getStaticPaths é uma forma de informar os possiveis parametros da url dinamica
