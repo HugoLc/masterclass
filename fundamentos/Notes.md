@@ -16,3 +16,5 @@
 
 - em suma, com o react a pájina so é carregada juntamente com o js. com o next, os elementos html/css são carregados primeiro, independentemente do carregamento do js que vira em seguida
 - https://www.youtube.com/watch?v=BeXbCgRxifs&list=PLC3y8-rFHvwgC9mj0qv972IO5DmD-H0ZH&index=15
+
+- a função getStaticProps é executada no servidor e podem ser utilizadas funcionalidades server-side dentro dela. é utilizada apenas em pages e não em componentes. deve retornar um objeto "props" com outro objeto dentro.
