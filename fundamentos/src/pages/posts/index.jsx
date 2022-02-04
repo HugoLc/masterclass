@@ -24,9 +24,9 @@ export async function getStaticProps(){// retorna props para o componente
     return(
         {
             props:{
-                /* posts: data.slice(0,3) */ // esse metodo não é viavel pois será necessário 
+                posts: data.slice(0,3) // esse metodo não é viavel pois será necessário 
                                             // especificar cada caminho individualmente no [postId].jsx
-                posts: data
+                /* posts: data */
             }
         }
     )

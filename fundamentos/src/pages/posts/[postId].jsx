@@ -13,7 +13,9 @@ export default Post;
 
 // getStaticPaths é uma forma de informar os possiveis parametros da url dinamica
 export async function getStaticPaths(){
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    //FORMA GERANDO PATHS DE ACORDO COM A QUANTIDADE DE IDS
+
+    /* const response = await fetch("https://jsonplaceholder.typicode.com/posts")
     const data = await response.json() // recebe os dados de 100 posts da api
 
     const paths = data.map(post => {
@@ -22,17 +24,11 @@ export async function getStaticPaths(){
                 postId: `${post.id}`
             }
         }
-    })
-
-
-    
+    }) */
     return (
         {
             //FORMA GERANDO PATHS MANUALMENTE
-           /*  paths: [ // um array de objetos informando os caminhos
-            
-
-                
+            paths: [ // um array de objetos informando os caminhos
                 {
                     params: { // o parametro da url
                         postId: '1' //possivel valor do parametro postId
@@ -48,9 +44,20 @@ export async function getStaticPaths(){
                         postId: '3'
                     }
                 }
-            ], */
-            paths: paths, //FORMA GERANDO PATHS DE ACORDO COM A QUANTIDADE DE IDS
-            fallback: false
+            ],
+             //FORMA GERANDO PATHS DE ACORDO COM A QUANTIDADE DE IDS
+            /* paths: paths,*/
+            
+            
+            //fallback: false 
+            // Os caminhos retornados do getstaticpaths serão renderizados para html no build time pelo getstaticprops
+            // Com fallback sendo falso qualquer caimnho que não for retornado por getstaticpaths irá resultar em 404
+            
+            // Valido para aplicações com poucos caminhos para serem renderizados / quando novas páginas não são 
+            // adicionadas com frenquencia (blog com poucos artigos)
+            
+            
+        
         }
     )
 }
