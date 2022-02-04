@@ -13,9 +13,26 @@ export default Post;
 
 // getStaticPaths é uma forma de informar os possiveis parametros da url dinamica
 export async function getStaticPaths(){
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts")
+    const data = await response.json() // recebe os dados de 100 posts da api
+
+    const paths = data.map(post => {
+        return {
+            params: {
+                postId: `${post.id}`
+            }
+        }
+    })
+
+
+    
     return (
         {
-            paths: [ // um array de objetos informando os caminhos
+            //FORMA GERANDO PATHS MANUALMENTE
+           /*  paths: [ // um array de objetos informando os caminhos
+            
+
+                
                 {
                     params: { // o parametro da url
                         postId: '1' //possivel valor do parametro postId
@@ -31,7 +48,8 @@ export async function getStaticPaths(){
                         postId: '3'
                     }
                 }
-            ],
+            ], */
+            paths: paths, //FORMA GERANDO PATHS DE ACORDO COM A QUANTIDADE DE IDS
             fallback: false
         }
     )
