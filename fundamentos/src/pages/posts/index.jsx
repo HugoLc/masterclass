@@ -6,7 +6,7 @@ const PostList = ({posts}) => {
         {posts.map(post => {
             return(
                 <li key={post.id}>
-                    <Link href={`posts/${post.id}`}><h4>{post.title}</h4></Link>
+                    <Link href={`posts/${post.id}`} passHref><h4>{post.title} </h4></Link>
                 </li>
             )
         })}

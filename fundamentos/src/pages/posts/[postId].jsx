@@ -1,6 +1,15 @@
 import React from 'react';
+import {useRouter} from 'next/router'
 
 function Post({post}) {
+
+    const router = useRouter()
+    // para tratar o erro Cannot read properties of undefined (reading 'id'){post.id}
+    if(router.isFallback){
+        return <h1>Loading</h1>
+        //retorno caso seja um fallback
+    }
+
   return(
       <>
         <h3><span>{post.id}</span>{post.title}</h3>
@@ -56,7 +65,14 @@ export async function getStaticPaths(){
             // Valido para aplicações com poucos caminhos para serem renderizados / quando novas páginas não são 
             // adicionadas com frenquencia (blog com poucos artigos)
             
-            
+            fallback:true
+            // Com fallback sendo true, o caminho nao contido nos "paths" irá gerar um fallback page no primeiro acesso
+            // Por trás disso o next.js irá gerar estaticamente a página html e json para este caminho isso inclui
+            // rodar getstaticprops
+            // Quando for finalizado o navegador irá recerber o json para o caminho gerado que será isado para 
+            // renderizar automaticamente a página com os props requisitados 
+            // O next.js irá manter registrado a nova lista de páginas pre-renderizadas para que requisições 
+            // futuras ao mesmo caminho sirvam a página gerada assim como as outras páginas/caminhos especificados
         
         }
     )
@@ -67,6 +83,14 @@ export async function getStaticProps(/* context */ {params}){
     const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
     const data = await response.json()
 
+    // se nao retornar nada
+    if (!data.id) {
+        return {
+            notFound: true //retorna um objeto com uma chave notFound ao inves do props, o que irá resultar em 404
+        }
+    }
+
+    console.log(`Gerando paginas para posts/${params.postId}`)
     return (
         {
             props: {
